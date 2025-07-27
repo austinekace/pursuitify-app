@@ -1,0 +1,258 @@
+.welcome-page-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+/* Galaxy background covers the whole viewport */
+.galaxy-background {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background: radial-gradient(ellipse at center, #1a237e 0%, #000 100%);
+  overflow: hidden;
+}
+
+/* Sun */
+.sun {
+  position: absolute;
+  left: 5vw;
+  top: 40vh;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #fff700 60%, #ff9800 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 80px 40px #fff70088, 0 0 200px 100px #ff980044;
+  z-index: 1;
+}
+
+/* Earth (rotating) */
+.earth-orbit {
+  position: absolute;
+  left: 45vw;
+  top: 35vh;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+}
+
+.earth {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at 60% 40%, #3fa9f5 70%, #1a237e 100%);
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 0 40px 10px #3fa9f588;
+  animation: rotateEarth 8s linear infinite;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: 11;
+}
+
+@keyframes rotateEarth {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+/* Other Planets (static) */
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.planet.mars {
+  left: 60vw;
+  top: 60vh;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #ff7043 70%, #b71c1c 100%);
+  box-shadow: 0 0 20px 5px #ff704388;
+}
+
+.planet.jupiter {
+  left: 80vw;
+  top: 30vh;
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, #ffe082 60%, #bcaaa4 100%);
+  box-shadow: 0 0 30px 10px #ffe08288;
+}
+
+.planet.saturn {
+  left: 70vw;
+  top: 70vh;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #ffe0b2 60%, #a1887f 100%);
+  box-shadow: 0 0 25px 8px #ffe0b288;
+}
+
+/* Clock at top right */
+.clock-container {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 10;
+  margin: 0;
+}
+
+.clock-text {
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #fff, 0 0 20px #2196f3;
+  background: rgba(0,0,0,0.4);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+/* Auth container (centered card) */
+.auth-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  transform: translate(-50%, -50%);
+  background: rgba(20, 24, 48, 0.92);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 18px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  min-width: 320px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.auth-toggle button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.auth-toggle button.active,
+.auth-toggle button:hover {
+  background: #2196f3;
+  color: #fff;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.auth-form h2 {
+  color: #fff;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #232b4a;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.2s;
+}
+
+.auth-form input:focus {
+  background: #2e3a5e;
+}
+
+.auth-form button[type="submit"] {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #2196f3 60%, #21cbf3 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px 0 #2196f344;
+  transition: background 0.2s;
+}
+
+.auth-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #21cbf3 60%, #2196f3 100%);
+}
+
+@media (max-width: 600px) {
+  .auth-container {
+    min-width: 90vw;
+    padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+  }
+  .clock-container {
+    top: 1rem;
+    right: 1rem;
+  }
+  .clock-text {
+    font-size: 1rem;
+  }
+}
+
+
+
+.password-field {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 2.5rem;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #2196f3;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.error-msg {
+  color: #ff5252;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  text-align: left;
+}
